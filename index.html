@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conejos y Fibonacci | Crecimiento de Población</title>
+  <link rel="stylesheet" href="css/stilos.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐇</text></svg>" />
+</head>
+<body>
+ 
+<!-- ========================================================
+     SECCIÓN 1 — PORTADA / ENCABEZADO
+     Incluye: título del proyecto, nombre del estudiante/grupo
+     ======================================================== -->
+<header class="hero">
+  <div class="hero-dots">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+ 
+  <div class="container hero-inner">
+    <span class="hero-etiqueta">
+      🎓 &nbsp;·&nbsp; Fibonacci en el Mundo Real
+    </span>
+ 
+    <h1>
+      Fibonacci en crecimiento de<br/>
+      <em> poblacion de conejos </em>
+    </h1>
+ 
+    <p class="hero-sub">
+      Descubre cómo una serie matemática descubierta en el año 1202
+      describe perfectamente cómo crece una población de conejos.
+    </p>
+ 
+    <div class="hero-chips">
+      <span class="chip">🐇 Fibonacci en Población</span>
+      <span class="chip">📱 soprendente </span>
+      <span class="chip">💻 ahora digital</span>
+    </div>
+  </div>
+ 
+  <!-- Ola de transición al cuerpo -->
+  <svg class="ola" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 1440 64" preserveAspectRatio="none"
+       style="fill:#FFF8F0;display:block;margin-top:-1px">
+    <path d="M0,48 C240,80 480,16 720,40 C960,64 1200,16 1440,48 L1440,64 L0,64 Z"/>
+  </svg>
+</header>
+ 
+ 
+<!-- ========================================================
+     SECCIÓN 2 — CONTEXTO DEL PROBLEMA
+     ======================================================== -->
+<section id="contexto">
+  <div class="container">
+    <span class="seccion-label">01 · Contexto del Problema</span>
+    <h2 class="seccion-titulo">¿Cómo crecen los conejos<br/>con el tiempo?</h2>
+    <p class="seccion-desc">
+      En el año 1202, el matemático italiano Leonardo Fibonacci planteó este enigma:
+      <strong>si ponemos una pareja de conejos en un campo cerrado, ¿cuántas parejas
+      habrá después de N meses?</strong> La respuesta dio origen a una de las
+      secuencias matemáticas más famosas de la historia.
+    </p>
+ 
+    <div class="contexto-grid">
+ 
+      <div class="ctx-card verde">
+        <span class="ctx-icono">📜</span>
+        <h3>El problema original de Fibonacci</h3>
+        <p>
+          Leonardo de Pisa (apodado Fibonacci) supuso que:
+          un par de conejos tarda <strong>un mes en madurar</strong>,
+          luego produce <strong>un nuevo par cada mes</strong>,
+          y los conejos nunca mueren. Bajo estas reglas,
+          la población sigue exactamente la serie: <strong>1, 1, 2, 3, 5, 8, 13…</strong>
+        </p>
+      </div>
+ 
+      <div class="ctx-card miel">
+        <span class="ctx-icono">🌿</span>
+        <h3>¿Por qué importa esto hoy?</h3>
+        <p>
+          Este mismo patrón aparece en la <strong>biología de poblaciones</strong>,
+          el crecimiento bacteriano, la disposición de pétalos en flores,
+          y los modelos económicos de crecimiento compuesto.
+          Entender Fibonacci es entender cómo crece la naturaleza.
+        </p>
+      </div>
+ 
+      <div class="ctx-card verde">
+        <span class="ctx-icono">🔢</span>
+        <h3>La regla matemática</h3>
+        <p>
+          Cada número de la serie es la <strong>suma de los dos anteriores</strong>:
+          <br/><br/>
+          F(1) = 1 &nbsp;|&nbsp; F(2) = 1<br/>
+          F(n) = F(n−1) + F(n−2)<br/><br/>
+          Simple, pero produce un crecimiento exponencial asombroso.
+        </p>
+      </div>
+ 
+      <div class="ctx-card miel">
+        <span class="ctx-icono">📊</span>
+        <h3>Crecimiento real de la colonia</h3>
+        <p>
+          A los <strong>10 meses</strong>: 55 pares (110 conejos).<br/>
+          A los <strong>20 meses</strong>: 6,765 pares.<br/>
+          A los <strong>30 meses</strong>: 832,040 pares.<br/><br/>
+          El crecimiento de Fibonacci aproxima el
+          <strong>crecimiento exponencial real</strong> de muchas especies.
+        </p>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+ 
+<!-- ========================================================
+     SECCIÓN 3 — EXPLICACIÓN DEL ALGORITMO
+     ======================================================== -->
+<section id="algoritmo">
+  <div class="container">
+    <span class="seccion-label">02 · Explicación del Algoritmo</span>
+    <h2 class="seccion-titulo">¿Cómo funciona el algoritmo?</h2>
+    <p class="seccion-desc">
+      El algoritmo calcula la serie de Fibonacci usando <strong>solo tres variables</strong>
+      (sin arreglos ni arrays), tal como lo establece el desafío.
+      Así funciona paso a paso:
+    </p>
+ 
+    <div class="algo-wrap">
+ 
+      <div class="algo-bloque">
+        <h3>🌱 Paso a paso del algoritmo</h3>
+        <p>
+          Empezamos con <code style="background:#e8f5e9;padding:2px 7px;border-radius:4px;font-size:0.85rem;color:#2D6A4F">a = 1</code>
+          y <code style="background:#e8f5e9;padding:2px 7px;border-radius:4px;font-size:0.85rem;color:#2D6A4F">b = 1</code>
+          (los dos primeros meses). En cada iteración calculamos
+          <code style="background:#e8f5e9;padding:2px 7px;border-radius:4px;font-size:0.85rem;color:#2D6A4F">c = a + b</code>,
+          luego avanzamos: <code style="background:#e8f5e9;padding:2px 7px;border-radius:4px;font-size:0.85rem;color:#2D6A4F">a = b</code>,
+          <code style="background:#e8f5e9;padding:2px 7px;border-radius:4px;font-size:0.85rem;color:#2D6A4F">b = c</code>.
+          Sin usar ningún array — solo tres variables simples.
+        </p>
+ 
+        <!-- Bloque de código con resaltado manual -->
+        <div class="code-snippet">
+          <code><span class="c-coment">// Variables simples (sin arrays)</span>
+<span class="c-clave">let</span> a = <span class="c-numero">1</span>, b = <span class="c-numero">1</span>, c;
+ 
+<span class="c-clave">for</span> (<span class="c-clave">let</span> i = <span class="c-numero">3</span>; i &lt;= meses; i++) {
+  c = a + b;   <span class="c-coment">// nuevo término</span>
+  a = b;       <span class="c-coment">// desplazar</span>
+  b = c;       <span class="c-coment">// siguiente</span>
+}</code>
+        </div>
+      </div>
+ 
+      <div class="algo-bloque">
+        <h3>🔑 Uso de getElementById()</h3>
+        <p>
+          Toda interacción con el formulario y la presentación de resultados
+          se realiza obligatoriamente con
+          <code style="background:#e8f5e9;padding:2px 7px;border-radius:4px;font-size:0.85rem;color:#2D6A4F">document.getElementById()</code>,
+          como exige el desafío. Así leemos los datos y mostramos la solución:
+        </p>
+ 
+        <div class="code-snippet">
+          <code><span class="c-coment">// Leer datos del formulario</span>
+<span class="c-clave">let</span> meses = parseInt(
+  document.getElementById(<span class="c-texto">"mesesConejos"</span>).value
+);
+ 
+<span class="c-coment">// Mostrar resultado en la página</span>
+document.getElementById(<span class="c-texto">"resultado-box"</span>)
+  .innerHTML = <span class="c-texto">"..."</span>;</code>
+        </div>
+ 
+        <p style="margin-top:16px;font-size:0.88rem">
+          La secuencia que genera el algoritmo para los primeros 10 meses:
+        </p>
+        <div class="seq-demo" id="secuencia-demo">
+          <!-- Generado por JavaScript -->
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+ 
+<!-- ========================================================
+     SECCIÓN 4 — FORMULARIO + BOTÓN + RESULTADO
+     ======================================================== -->
+<section id="formulario">
+  <div class="container">
+    <span class="seccion-label">03 · Simulador Interactivo</span>
+    <h2 class="seccion-titulo">Simula tu colonia de conejos</h2>
+    <p class="seccion-desc">
+      Ingresa cuántos meses quieres simular y observa cómo crece
+      la población siguiendo exactamente la serie de Fibonacci.
+    </p>
+ 
+    <!-- TARJETA DEL FORMULARIO -->
+    <div class="form-card" style="margin-top:36px">
+      <h3>🐇 Configurar simulación</h3>
+      <p class="subtitulo">
+        Completa los datos y presiona el botón para ver el crecimiento mes a mes.
+      </p>
+ 
+      <!-- FORMULARIO DE ENTRADA -->
+      <div class="campo">
+        <label for="nombreUsuario">
+          Tu nombre (opcional)
+          <span>— aparecerá en el resultado</span>
+        </label>
+        <input
+          type="text"
+          id="nombreUsuario"
+          placeholder="Ej: María López"
+          maxlength="40"
+        />
+      </div>
+ 
+      <div class="campo">
+        <label for="mesesConejos">
+          ¿Cuántos meses deseas simular?
+          <span>— entre 1 y 40 meses</span>
+        </label>
+        <input
+          type="number"
+          id="mesesConejos"
+          placeholder="Ej: 12"
+          min="1"
+          max="40"
+          value="12"
+        />
+      </div>
+ 
+      <!-- MENSAJE DE ERROR (oculto por defecto) -->
+      <div id="msg-error" class="msg-error"></div>
+ 
+      <!-- BOTÓN DE EJECUCIÓN -->
+      <button class="btn-calcular" onclick="calcularConejos()">
+        <span>🚀</span> Simular crecimiento
+      </button>
+ 
+      <!-- ÁREA DE RESULTADOS (oculta por defecto, visible tras calcular) -->
+      <div id="resultado-box" class="resultado-box">
+        <!-- Contenido generado por JavaScript -->
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+ 
+<!-- ========================================================
+     SECCIÓN 5 — CONCLUSIÓN
+     ======================================================== -->
+<section id="conclusion">
+  <div class="container">
+    <div class="conclu-inner">
+      <span class="seccion-label">04 · Conclusión</span>
+      <h2 class="seccion-titulo">¿Qué nos enseña este modelo?</h2>
+      <p class="seccion-desc">
+        La serie de Fibonacci no es solo una curiosidad matemática: es un modelo
+        real que describe cómo crecen las poblaciones en condiciones ideales.
+        Y lo mejor: se puede calcular con un algoritmo sencillo de solo tres variables.
+      </p>
+ 
+      <div class="conclu-puntos">
+ 
+        <div class="cpunto">
+          <span class="cpunto-icono">🔢</span>
+          <p>
+            Fibonacci demostró en 1202 que las matemáticas pueden modelar
+            comportamientos naturales complejos con reglas simples y elegantes.
+          </p>
+        </div>
+ 
+        <div class="cpunto">
+          <span class="cpunto-icono">🌍</span>
+          <p>
+            Este modelo se aplica en biología, economía, arquitectura y diseño.
+            Comprender la serie Fibonacci abre puertas a entender la naturaleza.
+          </p>
+        </div>
+ 
+        <div class="cpunto">
+          <span class="cpunto-icono">💻</span>
+          <p>
+            Con solo HTML, CSS y JavaScript podemos convertir una fórmula de
+            800 años en una herramienta visual, interactiva y accesible para todos.
+          </p>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+</section>
+ 
+ 
+<!-- ========================================================
+     SECCIÓN 6 — ENLACES (repositorio y página publicada)
+     ======================================================== -->
+<section id="enlaces">
+  <div class="container">
+    <span class="seccion-label" style="display:block;text-align:center">
+      05 · Entregables
+    </span>
+    <h2 class="seccion-titulo" style="text-align:center">
+      Repositorio y publicación
+    </h2>
+    <p class="seccion-desc" style="margin:0 auto;text-align:center">
+      El proyecto está disponible en GitHub con todo el código fuente
+      organizado según la estructura del desafío.
+    </p>
+ 
+    <div class="enlaces-row">
+      <a href="#" class="enlace-btn github">
+        <!-- Ícono GitHub SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207
+            11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416
+            -.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729
+            1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997
+            .107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931
+            0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0
+            1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005
+            2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653
+            1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221
+            0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293
+            c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386
+            0-6.627-5.373-12-12-12z"/>
+        </svg>
+        Ver en GitHub
+      </a>
+ 
+      <a href="#" class="enlace-btn live">
+        <!-- Ícono globo SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10
+                   15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        Ver página publicada
+      </a>
+    </div>
+  </div>
+</section>
+ 
+ 
+<!-- ========================================================
+     FOOTER
+     ======================================================== -->
+<footer>
+  <p>
+    <strong>Conejos y Fibonacci</strong> · Desafío Web — Matemáticas en el Mundo Real · 2025
+  </p>
+  <p style="margin-top:6px;font-size:0.76rem">
+    Desarrollado con HTML · CSS · JavaScript · document.getElementById() · GitHub Pages · Diseño Responsivo
+  </p>
+</footer>
+ 
+ 
+<!-- Script al final del body -->
+<script src="js/script.js"></script>
+ 
+</body>
+</html>
